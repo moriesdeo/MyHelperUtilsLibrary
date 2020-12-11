@@ -78,18 +78,16 @@ fun removeDataInt(ctx: Context, key: String) {
     sharedPreferences.edit().remove(key).apply()
 }
 
-fun myInflate(parent: ViewGroup, resource: Int) =
+fun myInflateRecyclerViewAdapter(parent: ViewGroup, resource: Int) =
     LayoutInflater.from(parent.context).inflate(resource, parent, false) as View
 
 fun getDecimal(value: Int): String {
-
     return try {
         val dec = DecimalFormat("#,###.##")
         dec.format(value)
     } catch (e: Exception) {
         "0"
     }
-
 }
 
 fun alertDialogWithTitle(context: Context?, title: String, message: String?) {
