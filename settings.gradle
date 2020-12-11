@@ -1,0 +1,3 @@
+include ':mylibraryhelper'
+include ':app'
+rootProject.name = "MyHelperUtilsLibrary"
