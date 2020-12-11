@@ -18,7 +18,7 @@ fun setDataPrefFloat(ctx: Context, key: String, value: Float) {
     sharedPreferences.edit().putFloat(key, value).apply()
 }
 
-fun getDataPrefFloat(ctx: Context, key: String): Float? {
+fun getDataPrefFloat(ctx: Context, key: String): Float {
     val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
     return sharedPreferences.getFloat(key, 0.0f)
 }
@@ -33,7 +33,7 @@ fun setDataPrefBoolean(ctx: Context, key: String, value: Boolean) {
     sharedPreferences.edit().putBoolean(key, value).apply()
 }
 
-fun getDataPrefBoolean(ctx: Context, key: String): Boolean? {
+fun getDataPrefBoolean(ctx: Context, key: String): Boolean {
     val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
     return sharedPreferences.getBoolean(key, false)
 }
@@ -43,7 +43,7 @@ fun getDataPrefString(ctx: Context, key: String): String? {
     return sharedPreferences.getString(key, "")
 }
 
-fun getDataPrefInt(ctx: Context, key: String): Int? {
+fun getDataPrefInt(ctx: Context, key: String): Int {
     val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
     return sharedPreferences.getInt(key, 0)
 }
@@ -58,7 +58,7 @@ fun setDataPrefLong(ctx: Context, key: String, value: Long) {
     sharedPreferences.edit().putLong(key, value).apply()
 }
 
-fun getDataPrefLong(ctx: Context, key: String): Long? {
+fun getDataPrefLong(ctx: Context, key: String): Long {
     val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
     return sharedPreferences.getLong(key, 0)
 }
