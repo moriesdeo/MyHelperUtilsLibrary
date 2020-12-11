@@ -9,117 +9,126 @@ import android.widget.Toast
 import androidx.preference.PreferenceManager
 import java.text.DecimalFormat
 
-fun showToast(context: Context?, message: String?) {
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-}
+class MoriesHelper(context: Context?) {
 
-fun setDataPrefFloat(ctx: Context, key: String, value: Float) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    sharedPreferences.edit().putFloat(key, value).apply()
-}
+    private val context: Context?
 
-fun getDataPrefFloat(ctx: Context, key: String): Float {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    return sharedPreferences.getFloat(key, 0.0f)
-}
-
-fun setDataPrefString(ctx: Context, key: String, value: String) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    sharedPreferences.edit().putString(key, value).apply()
-}
-
-fun setDataPrefBoolean(ctx: Context, key: String, value: Boolean) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    sharedPreferences.edit().putBoolean(key, value).apply()
-}
-
-fun getDataPrefBoolean(ctx: Context, key: String): Boolean {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    return sharedPreferences.getBoolean(key, false)
-}
-
-fun getDataPrefString(ctx: Context, key: String): String? {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    return sharedPreferences.getString(key, "")
-}
-
-fun getDataPrefInt(ctx: Context, key: String): Int {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    return sharedPreferences.getInt(key, 0)
-}
-
-fun setDataPrefInt(ctx: Context, key: String, value: Int) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    sharedPreferences.edit().putInt(key, value).apply()
-}
-
-fun setDataPrefLong(ctx: Context, key: String, value: Long) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    sharedPreferences.edit().putLong(key, value).apply()
-}
-
-fun getDataPrefLong(ctx: Context, key: String): Long {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    return sharedPreferences.getLong(key, 0)
-}
-
-fun removeDataPrefString(ctx: Context, key: String) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    sharedPreferences.edit().remove(key).apply()
-}
-
-fun removeDataPrefBoolean(ctx: Context, key: String) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    sharedPreferences.edit().remove(key).apply()
-}
-
-fun removeDataInt(ctx: Context, key: String) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)
-    sharedPreferences.edit().remove(key).apply()
-}
-
-fun myInflateRecyclerViewAdapter(parent: ViewGroup, resource: Int) =
-    LayoutInflater.from(parent.context).inflate(resource, parent, false) as View
-
-fun getDecimal(value: Int): String {
-    return try {
-        val dec = DecimalFormat("#,###.##")
-        dec.format(value)
-    } catch (e: Exception) {
-        "0"
+    init {
+        this.context = context
     }
-}
 
-fun alertDialogWithTitle(context: Context?, title: String, message: String?) {
-    val success = AlertDialog.Builder(context!!)
-    success.setTitle(title)
-    success.setMessage(message)
-    success.setPositiveButton("Ok") { _, _ ->
-
+    fun showToast(message: String?) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
-    success.setCancelable(false)
-    success.create().show()
-}
 
-fun alertDialogDefault(context: Context?, message: String?) {
-    val success = AlertDialog.Builder(context!!)
-    success.setMessage(message)
-    success.setPositiveButton("Ok") { _, _ ->
-
+    fun setDataPrefFloat(key: String, value: Float) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit().putFloat(key, value).apply()
     }
-    success.setCancelable(false)
-    success.create().show()
-}
 
-fun changeToRupiah(price: Int): String {
-    val formatter = DecimalFormat("#,###")
-    val convert = formatter.format(price)
-    val filter = convert.replace(",", ".")
-    return "Rp. $filter"
-}
+    fun getDataPrefFloat(key: String): Float {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        return sharedPreferences.getFloat(key, 0.0f)
+    }
 
-fun changeWithoutRupiah(price: Int): String {
-    val formatter = DecimalFormat("#,###")
-    val convert = formatter.format(price)
-    return convert.replace(",", ".")
+    fun setDataPrefString(key: String, value: String) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit().putString(key, value).apply()
+    }
+
+    fun setDataPrefBoolean(key: String, value: Boolean) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit().putBoolean(key, value).apply()
+    }
+
+    fun getDataPrefBoolean(key: String): Boolean {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        return sharedPreferences.getBoolean(key, false)
+    }
+
+    fun getDataPrefString(key: String): String? {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        return sharedPreferences.getString(key, "")
+    }
+
+    fun getDataPrefInt(key: String): Int {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        return sharedPreferences.getInt(key, 0)
+    }
+
+    fun setDataPrefInt(key: String, value: Int) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit().putInt(key, value).apply()
+    }
+
+    fun setDataPrefLong(ctx: Context, key: String, value: Long) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit().putLong(key, value).apply()
+    }
+
+    fun getDataPrefLong(key: String): Long {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        return sharedPreferences.getLong(key, 0)
+    }
+
+    fun removeDataPrefString(key: String) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit().remove(key).apply()
+    }
+
+    fun removeDataPrefBoolean(key: String) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit().remove(key).apply()
+    }
+
+    fun removeDataInt(key: String) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit().remove(key).apply()
+    }
+
+    fun myInflateRecyclerViewAdapter(parent: ViewGroup, resource: Int) =
+        LayoutInflater.from(parent.context).inflate(resource, parent, false) as View
+
+    fun getDecimal(value: Int): String {
+        return try {
+            val dec = DecimalFormat("#,###.##")
+            dec.format(value)
+        } catch (e: Exception) {
+            "0"
+        }
+    }
+
+    fun alertDialogWithTitle(title: String, message: String?) {
+        val success = AlertDialog.Builder(context)
+        success.setTitle(title)
+        success.setMessage(message)
+        success.setPositiveButton("Ok") { _, _ ->
+
+        }
+        success.setCancelable(false)
+        success.create().show()
+    }
+
+    fun alertDialogDefault(message: String?) {
+        val success = AlertDialog.Builder(context)
+        success.setMessage(message)
+        success.setPositiveButton("Ok") { _, _ ->
+
+        }
+        success.setCancelable(false)
+        success.create().show()
+    }
+
+    fun changeToRupiah(price: Int): String {
+        val formatter = DecimalFormat("#,###")
+        val convert = formatter.format(price)
+        val filter = convert.replace(",", ".")
+        return "Rp. $filter"
+    }
+
+    fun changeWithoutRupiah(price: Int): String {
+        val formatter = DecimalFormat("#,###")
+        val convert = formatter.format(price)
+        return convert.replace(",", ".")
+    }
 }
